@@ -19,7 +19,7 @@ class Airline(models.Model):
     def __str__(self):
         return self.name
     
-class Runways(models.Model):
+class Runway(models.Model):
     runway_number = models.IntegerField()
     runway_designation = models.CharField(max_length=1,choices=(('L','Left'), ('C','Center'), ('R', 'Right'), ('N', 'None')))
     length = models.IntegerField()
@@ -29,7 +29,7 @@ class Runways(models.Model):
     def __str__(self):
         return self.runway_number + self.runway_designation
     
-class Flights(models.Model):
+class Flight(models.Model):
     origin = models.ForeignKey('Airport', on_delete=models.PROTECT, related_name='flight_origin')
     destination = models.ForeignKey('Airport', on_delete=models.PROTECT, related_name='flight_destination')
     airline = models.ForeignKey('Airline', on_delete=models.PROTECT, related_name='airline')
